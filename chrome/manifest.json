@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Eva",
+    "short_name": "Eva",
+    "version": "1.0.0",
+    "description": "Simple Extension",
+    "icons": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    },
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "browser_action": {},
+    "permissions": []
+  }
