@@ -75,7 +75,8 @@ class Timestamp extends Component {
   }
 
   timestamp2String() {
-    const input = Number.parseInt(this.state.timestamp2StringInput);
+    const input = Number.parseInt(this.state.timestamp2StringInput.trim());
+    const inputLength = input.toString().length;
     if (isNaN(input)) {
       this.setState({
         timestamp2StringOutput: '格式: 10/13时间戳'
@@ -83,13 +84,13 @@ class Timestamp extends Component {
       return;
     }
     if (input) {
-      if (input.length === 10) {
+      if (inputLength === 10) {
         this.setState({
-          timestamp2StringOutput: moment.unix(input).format('YYYY-MM-DD HH:mm:ss:SSS')
+          timestamp2StringOutput: moment.unix(input).format('YYYY-MM-DD HH:mm:ss')
         })
         return;
       }
-      if (input.length === 13) {
+      if (inputLength === 13) {
         this.setState({
           timestamp2StringOutput: moment(input).format('YYYY-MM-DD HH:mm:ss:SSS')
         })
@@ -102,7 +103,7 @@ class Timestamp extends Component {
   }
 
   string2Timestamp() {
-    const input = this.state.string2TimestampInput;
+    const input = this.state.string2TimestampInput.trim();
     if (moment(input, 'YYYY-MM-DD', true).isValid()) {
       this.setState({
         string2TimestampOutput: moment(input, 'YYYY-MM-DD').unix()
