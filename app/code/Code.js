@@ -203,6 +203,8 @@ class Code extends Component {
   } 
 
   convert(mode, div) {
+    if(this.state.code === '') return;
+
     const _mode = div === 'div' ? mode : this.state.mode;
     let result = '';
 
