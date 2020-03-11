@@ -26,18 +26,6 @@ function sizeFormat(num) {
   }
 }
 
-function beforeUpload(file) {
-  const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-  if (!isJpgOrPng) {
-    message.error('You can only upload JPG/PNG file!');
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error('Image must smaller than 2MB!');
-  }
-  return isJpgOrPng && isLt2M;
-}
-
 class ImageToBase extends Component {
   constructor(props) {
     super(props);
@@ -51,6 +39,7 @@ class ImageToBase extends Component {
   }
 
   handleChange(info) {
+    console.log(info);
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });
       return;
@@ -68,6 +57,7 @@ class ImageToBase extends Component {
         })
       });
     }
+    return false;
   };
 
   render() {

@@ -21,23 +21,13 @@ function sizeFormat(num) {
 }
 
 function showSize(base64) {
-    var str = base64.replace(/^data:image\/[\S\s]+?;base64,/, "");
-    var equalIndex = str.indexOf('=');
-    if(str.indexOf('=')>0) {
-        str=str.substring(0, equalIndex);
-    }
-    var strLength=str.length;
-    var fileLength=parseInt(strLength-(strLength/8)*2);
-    var size = "";
-    size = (fileLength / 1024).toFixed(2);
-    var sizeStr = size + "";
-    var index = sizeStr.indexOf(".");
-    var dou = sizeStr.substr(index + 1, 2)
-    if (dou == "00") {           
-      return sizeStr.substring(0, index) + sizeStr.substr(index + 3, 2)
-    }
-    return size;
-  }
+  var str = base64.replace(/^data:image\/[\S\s]+?;base64,/, "");
+  var eqTagIndex = str.indexOf("=");
+  str = eqTagIndex !== -1 ? str.substring(0, eqTagIndex) : str;
+  var strLen = str.length;
+  var size = strLen - (strLen / 8) * 2;
+  return size;
+}
 
 class Base64ToImage extends Component {
   constructor(props) {
@@ -63,7 +53,7 @@ class Base64ToImage extends Component {
       getBase64(info.file.originFileObj, imageUrl => {
         const base64 = imageUrl.replace(/^data:image\/[\S\s]+?;base64,/, "");
         this.setState({
-          fileSize: sizeFormat(info.file.size),
+          fileSize: sizeFormat(info.file.size * 1024),
           base64Size: sizeFormat(base64.length),
           base64: base64,
           imageUrl,
@@ -74,6 +64,8 @@ class Base64ToImage extends Component {
   };
 
   textAreahandleChange(event) {
+    console.log(event.target.value)
+    console.log(showSize(event.target.value))
       this.setState({
         base64Size: sizeFormat(event.target.value.length),
         fileSize: sizeFormat(showSize(event.target.value)),
