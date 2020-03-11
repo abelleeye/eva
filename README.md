@@ -19,3 +19,8 @@ Peter Qian
 # 页面截图
 
 ![页面截图](./image/eva_page.png)
+
+
+# 安装方法
+
+如果下载的crx包不能安装的话，请将项目下载下来，然后 `yarn dev` 将编译好的 build 文件夹拖拽进谷歌浏览器中。
