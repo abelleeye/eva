@@ -4,7 +4,7 @@
     "short_name": "Eva",
     "version": "1.0.0",
     "author": "Abel Lee",
-    "description": "一款因作者需求而生的一款极简风谷歌扩展! One Simple Tools!",
+    "description": " One Simple Tools! timestamp, image base64, encode etc...",
     "icons": {
       "16": "icons/eva_16.png",
       "48": "icons/eva_48.png",
