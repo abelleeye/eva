@@ -21,6 +21,8 @@ Peter Qian(钱学毅)
 ![页面截图](./image/eva_page.png)
 
 
-# 安装方法
+# 离线安装方法
 1. `yarn` 安装依赖
 2. `yarn dev` 将编译好的 build 文件夹拖拽进谷歌浏览器中。
+
+你也可以直接在Releases直接下载最新的zip包，解压后直接将文件夹拖拽到chrome扩展页面。
