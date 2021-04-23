@@ -1,7 +1,7 @@
 # eva
 一款因作者需求而生的一款极简风谷歌扩展!
 
-google store ID：dcjhacinagjbejleicefnpcnbeffhihi
+[扩展商店地址](https://chrome.google.com/webstore/detail/eva/dcjhacinagjbejleicefnpcnbeffhihi)
 ![商店](./image/eva_store_pic.png)
 
 # logo作者
