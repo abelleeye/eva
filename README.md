@@ -1,7 +1,8 @@
 # eva
 一款因作者需求而生的一款极简风谷歌扩展!
 
-不打算上传到谷歌商店!
+google store ID：dcjhacinagjbejleicefnpcnbeffhihi
+![商店](./image/eva_store_pic.png)
 
 # logo作者
 Peter Qian(钱学毅)
