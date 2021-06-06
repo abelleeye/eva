@@ -258,7 +258,7 @@ class Code extends Component {
               checked={this.state.mode === 'md5'}
               value="md5"
               control={<Radio color="secondary" />}
-              label="md5"
+              label="md5加密"
               labelPlacement="end"
             />
             <FormControlLabel
