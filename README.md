@@ -1,4 +1,4 @@
-# eva
+# [EVA](https://github.com/abelleeye/eva)
 一款因作者需求而生的一款极简风谷歌扩展!
 
 [扩展商店地址](https://chrome.google.com/webstore/detail/eva/dcjhacinagjbejleicefnpcnbeffhihi)
