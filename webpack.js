@@ -4,13 +4,13 @@ const CopyPlugin = require("copy-webpack-plugin");
 const baseManifest = require("./chrome/manifest.json");
 const WebpackExtensionManifestPlugin = require("webpack-extension-manifest-plugin");
 const config = {
-  mode: "development",
+  mode: process.env.NODE_ENV,
   devtool: "cheap-module-source-map",
   entry: {
     app: path.join(__dirname, "./static/index/index.js"),
   },
   output: {
-    path: path.resolve(__dirname, "./build"),
+    path: path.resolve(__dirname, "./dist"),
     filename: "[name].js"
   },
   resolve: {
