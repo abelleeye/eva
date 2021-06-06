@@ -179,7 +179,7 @@ const _base64Decode = function (str) {
  * @returns uri encode str
  */
 const _uriEncode = (str) => {
-  return encodeURIComponent(str);
+  return encodeURI(str);
 }
 
 const GreenRadio = withStyles({
