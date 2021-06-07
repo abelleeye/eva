@@ -182,6 +182,15 @@ const _uriEncode = (str) => {
   return encodeURI(str);
 }
 
+/**
+ * uri decode
+ * @param {*} str str
+ * @returns result
+ */
+const _uriDecode = (str) => {
+  return decodeURI(str);
+}
+
 const GreenRadio = withStyles({
   root: {
     '&$checked': {
@@ -226,8 +235,11 @@ class Code extends Component {
     if (_mode === 'atob')
       result = _utf8Decode(_base64Decode(this.state.code));
 
-    if (_mode === 'uri')
+    if (_mode === 'urie')
       result = _uriEncode(this.state.code);
+
+    if (_mode === 'urid')
+      result = _uriDecode(this.state.code);
 
     this.setState({result: result})
   }
@@ -274,10 +286,16 @@ class Code extends Component {
               label="base64解码"
             />
             <FormControlLabel
-              checked={this.state.mode === 'uri'}
-              value="uri"
+              checked={this.state.mode === 'urie'}
+              value="urie"
               control={<Radio color="secondary" />}
               label="uri编码"
+            />
+            <FormControlLabel
+              checked={this.state.mode === 'urid'}
+              value="urid"
+              control={<GreenRadio />}
+              label="uri解码"
             />
           </RadioGroup>
         </FormControl>
