@@ -12,14 +12,19 @@ Peter Qian(钱学毅)
 - 时间戳转换
 - 图片转base64
 - base64转图片
-- 字符串编解码(md5, base64)
+- 字符串编解码(md5, base64, uri)
+- JSON格式化(json format, json to xml, json to yaml)
   
 # 使用方法
 直接点击扩展图标会弹出主页面
 
 # 页面截图
 
-![页面截图](./image/eva_page.png)
+![timestamp](./image/eva_timestamp.png)
+![image_base64](./image/eva_image_base64.png)
+![base64_image](./image/eva_base64_image.png)
+![code](./image/eva_code.png)
+![json](./image/eva_json.png)
 
 
 # 离线安装方法
