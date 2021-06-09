@@ -14,6 +14,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.40",
     "antd": "^3.26.7",
+    "jsoneditor": "^9.5.0",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
     "react": "^16.12.0",
