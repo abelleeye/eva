@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { Component } from 'react';
 import JSONEditor from 'jsoneditor';
 import 'jsoneditor/dist/jsoneditor.css'
 import Button from '@material-ui/core/Button';
@@ -7,6 +7,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { pink, purple, cyan, deepOrange, teal, yellow } from '@material-ui/core/colors';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import yaml from 'js-yaml';
+import xml from 'xml-js';
 import './index.css';
 
 const PinkButton = withStyles((theme) => ({
@@ -61,8 +63,8 @@ const TealButton = withStyles((theme) => ({
 
 const YellowButton = withStyles((theme) => ({
   root: {
-    color: theme.palette.getContrastText(yellow[700]),
-    backgroundColor: yellow[700],
+    color: theme.palette.getContrastText(yellow[800]),
+    backgroundColor: yellow[800],
     '&:hover': {
       backgroundColor: yellow[900],
     },
@@ -71,22 +73,50 @@ const YellowButton = withStyles((theme) => ({
 
 
 export default class JSONEditorComponent extends Component {
+
+  constructor (props){
+    super(props);
+
+    this.leftToRight = this.leftToRight.bind(this);
+    this.rightToLeft = this.rightToLeft.bind(this);
+    this.jsonToXml = this.jsonToXml.bind(this);
+    this.jsonToYaml = this.jsonToYaml.bind(this);
+  }
+
   componentDidMount () {
     const leftJsonenditotOptions = {
       mode: 'code',
-      // onChangeJSON: this.props.onChangeJSON
     };
 
     const rightJsonenditotOptions = {
-      mode: 'code',
-      // onChangeJSON: this.props.onChangeJSON
+      mode: 'tree',
+      modes: ['tree', 'form', 'text', 'view', 'preview'],
+      onError: (error) => {
+      },
+      onValidationError: (errors) => {
+        errors.forEach((error) => {
+          switch (error.type) {
+            case 'validation': // schema validation error
+              break;
+            case 'customValidation': // custom validation error
+              break;
+            case 'error':  // json parse error
+              if (this.rightJsonenditor.getMode() === 'text') {
+                // 留着以后处理
+              }
+              break;
+          }
+        });
+      }
     };
 
+    const initJson = {name: 'Hola Eva!'};
+
     this.leftJsonenditor = new JSONEditor(this.leftJsonenditor, leftJsonenditotOptions);
-    this.leftJsonenditor.set({name: 'Hola Eva!'});
+    this.leftJsonenditor.set(initJson);
 
     this.rightJsonenditor = new JSONEditor(this.rightJsonenditor, rightJsonenditotOptions);
-    this.rightJsonenditor.set({});
+    this.rightJsonenditor.set(initJson);
   }
 
   componentWillUnmount () {
@@ -98,26 +128,41 @@ export default class JSONEditorComponent extends Component {
     }
   }
 
-  componentDidUpdate() {
-    // this.jsoneditor.update(this.props.json);
+  jsonToXml() {
+    let content = this.leftJsonenditor.getText();
+		const xmlStr = xml.json2xml(content, {compact: true, ignoreComment: true, spaces: 2});
+    this.rightJsonenditor.setMode('text')
+		this.rightJsonenditor.setText(xmlStr);
+  }
+
+  jsonToYaml() {
+    let content = this.leftJsonenditor.get();
+		const yamlStr = yaml.dump(content);
+    this.rightJsonenditor.setMode('text')
+		this.rightJsonenditor.setText(yamlStr);
+  }
+
+  leftToRight() {
+    this.rightJsonenditor.setMode('tree')
+    this.rightJsonenditor.set(this.leftJsonenditor.get())
+  }
+
+  rightToLeft() {
+    this.leftJsonenditor.setText(JSON.stringify(this.rightJsonenditor.get(), null, 2))
   }
 
   render() {
     return (
       <div className={"jsoneditor-container"}>
         <div className={"button-container"}>
-        <PinkButton variant="contained">格式化</PinkButton>
-        <PurpleButton variant="contained">压缩</PurpleButton>
-        <DeepOrangeButton variant="contained">JSON 转 XML</DeepOrangeButton>
-        <TealButton variant="contained">JSON 转 CSV</TealButton>
-        <Button variant="contained" color="secondary">JSON 转 YAML</Button>
-        <YellowButton variant="contained">JSON 转 YAML</YellowButton>
+        <DeepOrangeButton onClick={this.jsonToXml}>JSON 转 XML</DeepOrangeButton>
+        <TealButton onClick={this.jsonToYaml}>JSON 转 YAML</TealButton>
         </div>
         <div className={"jsoneditor-sub-container"}>
           <div className={"app-jsoneditor"} ref={elem => this.leftJsonenditor = elem} />
           <div className={"json-convert-button"}>
-            <IconButton className={"json-convert-button-item"}><ArrowForwardIcon/></IconButton>
-            <IconButton className={"json-convert-button-item"}><ArrowBackIcon/></IconButton>
+            <IconButton className={"json-convert-button-item"} onClick={this.leftToRight}><ArrowForwardIcon/></IconButton>
+            <IconButton className={"json-convert-button-item"} onClick={this.rightToLeft}><ArrowBackIcon/></IconButton>
           </div>
           <div className={"app-jsoneditor"} ref={elem => this.rightJsonenditor = elem} />
         </div>

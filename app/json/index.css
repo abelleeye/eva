@@ -60,3 +60,7 @@
   background: #353848;
   border-color: #353848;
 }
+
+.jsoneditor-contextmenu .jsoneditor-menu button {
+  color: #d3d3d3
+}
