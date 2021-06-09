@@ -6,12 +6,6 @@ import './index.css'
 
 const { TextArea } = Input;
 
-function getBase64(img, callback) {
-  const reader = new FileReader();
-  reader.addEventListener('load', () => callback(reader.result));
-  reader.readAsDataURL(img);
-}
-
 function sizeFormat(num) {
   if (isNaN(num)) {
       return '暂无数据';
@@ -35,31 +29,28 @@ class ImageToBase extends Component {
       fileSize: '',
       base64Size: '', 
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.selfUpload = this.selfUpload.bind(this);
   }
 
-  handleChange(info) {
-    console.log(info);
-    if (info.file.status === 'uploading') {
-      this.setState({ loading: true });
-      return;
-    }
-    if (info.file.status === 'done') {
-      // Get this url from response in real world.
-      getBase64(info.file.originFileObj, imageUrl => {
-        const base64 = imageUrl.replace(/^data:image\/[\S\s]+?;base64,/, "");
-        this.setState({
-          fileSize: sizeFormat(info.file.size),
-          base64Size: sizeFormat(base64.length),
-          base64: base64,
-          imageUrl,
-          loading: false,
-        })
-      });
-    }
-    return false;
-  };
-
+  selfUpload ({ action, file, onSuccess, onError, onProgress }) {
+    new Promise(resolve => {
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
+      fileReader.onload = () => {
+        resolve(fileReader.result)
+      }
+    }).then(imageUrl => {
+      const base64 = imageUrl.replace(/^data:image\/\w+;base64,/, "");
+      this.setState({
+        fileSize: sizeFormat(file.size),
+        base64Size: sizeFormat(base64.length),
+        base64: base64,
+        imageUrl,
+        loading: false,
+      })
+    })
+  }
+  
   render() {
     const sourceInfo = '图片大小: ';
     const base64Info = 'base64大小: ';
@@ -79,7 +70,7 @@ class ImageToBase extends Component {
             listType="picture-card"
             className="image-uploader"
             showUploadList={false}
-            onChange={this.handleChange}
+            customRequest={this.selfUpload}
             >
             {imageUrl ? <img src={imageUrl} alt="image" style={{ width: '100%' }} /> : uploadButton}
             </Upload>

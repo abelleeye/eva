@@ -64,8 +64,6 @@ class Base64ToImage extends Component {
   };
 
   textAreahandleChange(event) {
-    console.log(event.target.value)
-    console.log(showSize(event.target.value))
       this.setState({
         base64Size: sizeFormat(event.target.value.length),
         fileSize: sizeFormat(showSize(event.target.value)),
