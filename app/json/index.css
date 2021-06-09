@@ -1,0 +1,62 @@
+.jsoneditor-container {
+  height: calc(100vh - 96px);
+  width: calc(100vw - 48px);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.jsoneditor-container .jsoneditor-menu {
+  background-color: #353848;
+  border-bottom: 1px solid #353848;
+}
+
+.jsoneditor-container .jsoneditor {
+  border: thin solid #e4e4e4;
+  border-radius: 6px;
+}
+
+.jsoneditor-container .jsoneditor-menu {
+  border-radius: 5px 5px 0 0;
+}
+
+.jsoneditor-container .button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.jsoneditor-container .button-container button {
+  margin-right: 10px;
+}
+
+
+.jsoneditor-container .jsoneditor-sub-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.jsoneditor-container .app-jsoneditor {
+  width: calc(50vw - 58px);
+  height: 80vh;
+}
+
+.jsoneditor-container .json-convert-button {
+  width: 48px;
+  height: 80vh;
+}
+
+.jsoneditor-container .json-convert-button .json-convert-button-item {
+  width: 48px;
+}
+
+.jsoneditor-modal .pico-modal-header {
+  background: #353848;
+}
+
+.jsoneditor-modal .jsoneditor-button-group.jsoneditor-button-group-value-asc input.jsoneditor-button-asc, .jsoneditor-modal .jsoneditor-button-group.jsoneditor-button-group-value-desc input.jsoneditor-button-desc {
+  background: #353848;
+  border-color: #353848;
+}

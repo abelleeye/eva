@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Timestamp from './timestamp/Timestamp'
-import ImageToBase64 from './image/ImageToBase64'
-import Base64ToImage from './image/Base64ToImage'
-import Code from './code/Code'
+import Timestamp from './timestamp/Timestamp';
+import ImageToBase64 from './image/ImageToBase64';
+import Base64ToImage from './image/Base64ToImage';
+import Code from './code/Code';
+import JSONEditor from './json/JSONEditor';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -66,6 +67,7 @@ export default function App() {
           <Tab label="图片转Base64" {...a11yProps(1)} />
           <Tab label="Base64转图片" {...a11yProps(2)} />
           <Tab label="字符串编解码"  {...a11yProps(3)} />
+          <Tab label="JSON格式化"  {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -79,6 +81,9 @@ export default function App() {
       </TabPanel>
       <TabPanel value={value} index={3}>
         <Code></Code>
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <JSONEditor></JSONEditor>
       </TabPanel>
     </div>
   )
