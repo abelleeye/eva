@@ -28,5 +28,12 @@ Peter Qian(钱学毅)
 
 
 # 离线安装方法
+
+## 自行编译
 1. `yarn` 安装依赖
-2. `yarn build` 将编译好的 dist 文件夹拖拽进谷歌浏览器中。
+2. `yarn build` 将编译好的 `dist` 文件夹拖拽进谷歌浏览器中。
+
+## 下载RELEASE
+下载RELEASE最新版本
+解压缩dist.tar
+将解压缩的 `dist` 文件夹拖拽到chrome扩展页面
