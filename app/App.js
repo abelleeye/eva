@@ -10,6 +10,7 @@ import ImageToBase64 from './image/ImageToBase64';
 import Base64ToImage from './image/Base64ToImage';
 import Code from './code/Code';
 import JSONEditor from './json/JSONEditor';
+import Markdown from './markdown/Markdown';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,6 +69,7 @@ export default function App() {
           <Tab label="Base64转图片" {...a11yProps(2)} />
           <Tab label="字符串编解码"  {...a11yProps(3)} />
           <Tab label="JSON格式化"  {...a11yProps(4)} />
+          <Tab label="MarkDown"  {...a11yProps(5)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -84,6 +86,9 @@ export default function App() {
       </TabPanel>
       <TabPanel value={value} index={4}>
         <JSONEditor></JSONEditor>
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        <Markdown></Markdown>
       </TabPanel>
     </div>
   )
