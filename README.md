@@ -14,6 +14,7 @@ Peter Qian(钱学毅)
 - base64转图片
 - 字符串编解码(md5, base64, uri)
 - JSON格式化(json format, json to xml, json to yaml)
+- 在线编写Markdown
   
 # 使用方法
 直接点击扩展图标会弹出主页面

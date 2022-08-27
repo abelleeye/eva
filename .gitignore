@@ -27,3 +27,5 @@ yarn.lock
 
 *.zip
 *.tar
+
+package-lock.json
