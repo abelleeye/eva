@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Eva",
     "short_name": "Eva",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "author": "Abel Lee",
     "description": " One Simple Tools! timestamp, image base64, encode, json format, markdown etc...",
     "icons": {
@@ -11,8 +11,9 @@
       "128": "icons/eva_128.png"
     },
     "background": {
-      "service_worker": "background.js"
+      "service_worker": "background.js",
+      "type": "module"
     },
-    "browser_action": {},
+    "action": {},
     "permissions": []
   }
