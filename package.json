@@ -20,6 +20,7 @@
     "@uiw/react-codemirror": "^4.11.6",
     "antd": "^3.26.7",
     "codemirror": "5.60.0",
+    "jpeg-js": "^0.4.4",
     "js-yaml": "^4.1.0",
     "jsoneditor": "^9.5.0",
     "md5": "^2.2.1",

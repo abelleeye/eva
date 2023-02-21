@@ -10,6 +10,7 @@ Peter Qian(钱学毅)
 # 功能
 
 - 时间戳转换
+- 图片查看器 YUV RGB etc
 - 图片转base64
 - base64转图片
 - 字符串编解码(md5, base64, uri)
@@ -22,6 +23,7 @@ Peter Qian(钱学毅)
 # 页面截图
 
 ![timestamp](./image/eva_timestamp.png)
+![image_viewer](./image/eva_image_viewer.png)
 ![image_base64](./image/eva_image_base64.png)
 ![base64_image](./image/eva_base64_image.png)
 ![code](./image/eva_code.png)

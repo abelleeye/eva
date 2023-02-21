@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Timestamp from './timestamp/Timestamp';
+import ImageViewer from './image_viewer/ImageViewer';
 import ImageToBase64 from './image/ImageToBase64';
 import Base64ToImage from './image/Base64ToImage';
 import Code from './code/Code';
@@ -65,29 +66,33 @@ export default function App() {
           aria-label="scrollable force tabs example"
         >
           <Tab label="时间戳转换"  {...a11yProps(0)} />
-          <Tab label="图片转Base64" {...a11yProps(1)} />
-          <Tab label="Base64转图片" {...a11yProps(2)} />
-          <Tab label="字符串编解码"  {...a11yProps(3)} />
-          <Tab label="JSON格式化"  {...a11yProps(4)} />
-          <Tab label="MarkDown"  {...a11yProps(5)} />
+          <Tab label="图片查看器"  {...a11yProps(1)} />
+          <Tab label="图片转Base64" {...a11yProps(2)} />
+          <Tab label="Base64转图片" {...a11yProps(3)} />
+          <Tab label="字符串编解码"  {...a11yProps(4)} />
+          <Tab label="JSON格式化"  {...a11yProps(5)} />
+          <Tab label="MarkDown"  {...a11yProps(6)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
         <Timestamp></Timestamp>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ImageToBase64></ImageToBase64>
+        <ImageViewer></ImageViewer>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Base64ToImage></Base64ToImage>
+        <ImageToBase64></ImageToBase64>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Code></Code>
+        <Base64ToImage></Base64ToImage>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <JSONEditor></JSONEditor>
+        <Code></Code>
       </TabPanel>
       <TabPanel value={value} index={5}>
+        <JSONEditor></JSONEditor>
+      </TabPanel>
+      <TabPanel value={value} index={6}>
         <Markdown></Markdown>
       </TabPanel>
     </div>
