@@ -146,7 +146,6 @@ class Timestamp extends Component {
         <Grid 
         container 
         direction="column"
-        justify="center"
         alignItems="center"
         spacing={3}>
           <Grid style={{marginTop: '30px'}}
