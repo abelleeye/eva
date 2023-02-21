@@ -2,9 +2,9 @@
     "manifest_version": 3,
     "name": "Eva",
     "short_name": "Eva",
-    "version": "3.0.2",
+    "version": "4.0.0",
     "author": "Abel Lee",
-    "description": " One Simple Tools! timestamp, image base64, encode, json format, markdown etc...",
+    "description": " One Simple Tools! timestamp, yuv rgb image viewer, image base64, encode, json format, markdown etc...",
     "icons": {
       "16": "icons/eva_16.png",
       "48": "icons/eva_48.png",
