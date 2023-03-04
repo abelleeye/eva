@@ -133,11 +133,29 @@ function imageToJpeg(imageData, width, height, quality, image_format) {
     }
   }
 
+  if (image_format === IMG_FORMAT.BGR_PACKED) {
+    for (let i = 0; i < width * height; i++) {
+      rgbaData[i * 4] = imageData[i * 3 + 2];
+      rgbaData[i * 4 + 1] = imageData[i * 3 + 1];
+      rgbaData[i * 4 + 2] = imageData[i * 3];
+      rgbaData[i * 4 + 3] = 0xff;
+    }
+  }
+
   if (image_format === IMG_FORMAT.RGB_PLANAR) {
     for (let i = 0; i < width * height; i++) {
       rgbaData[i * 4] = imageData[i];
       rgbaData[i * 4 + 1] = imageData[i + width * height];
       rgbaData[i * 4 + 2] = imageData[i + 2 * width * height];
+      rgbaData[i * 4 + 3] = 0xff;
+    }
+  }
+
+  if (image_format === IMG_FORMAT.BGR_PLANAR) {
+    for (let i = 0; i < width * height; i++) {
+      rgbaData[i * 4] = imageData[i + 2 * width * height];
+      rgbaData[i * 4 + 1] = imageData[i + width * height];
+      rgbaData[i * 4 + 2] = imageData[i];
       rgbaData[i * 4 + 3] = 0xff;
     }
   }
