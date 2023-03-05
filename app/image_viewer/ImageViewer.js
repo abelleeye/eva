@@ -18,11 +18,12 @@ const IMG_FORMAT = {
   YV12: 'yv12',
   NV12: 'nv12',
   NV21: 'nv21',
+  YUV422: 'yuv422',
   RGB_PLANAR: 'rgb_planar',
   BGR_PLANAR: 'bgr_planar',
   RGB_PACKED: 'rgb_packed',
   BGR_PACKED: 'bgr_packed',
-  YUV422: 'yuv422',
+  GRAY: 'gray',
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -160,6 +161,15 @@ function imageToJpeg(imageData, width, height, quality, image_format) {
     }
   }
 
+  if (image_format === IMG_FORMAT.GRAY) {
+    for (let i = 0; i < width * height; i++) {
+      rgbaData[i * 4] = imageData[i];
+      rgbaData[i * 4 + 1] = imageData[i];
+      rgbaData[i * 4 + 2] = imageData[i];
+      rgbaData[i * 4 + 3] = 0xff;
+    }
+  }
+
   const jpegImageData = encode({data: rgbaData, width, height}, quality)
 
   return jpegImageData.data;
@@ -258,6 +268,7 @@ function ImageViewer() {
                 <MenuItem value={IMG_FORMAT.BGR_PLANAR}>BGR_PLANAR bbbgggrrr</MenuItem>
                 <MenuItem value={IMG_FORMAT.RGB_PACKED}>RGB_PACKED rgbrgbrgb</MenuItem>
                 <MenuItem value={IMG_FORMAT.BGR_PACKED}>BGR_PACKED bgrbgrbgr</MenuItem>
+                <MenuItem value={IMG_FORMAT.GRAY}>GRAY</MenuItem>
              </Select>
           </FormControl>
         </div>
